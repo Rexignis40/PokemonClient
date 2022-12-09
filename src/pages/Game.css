@@ -1,0 +1,9 @@
+.grassRow{
+    display: flex;
+}
+.grassRow img{
+    float: left;
+    width:  30px;
+    height: 30px;
+    object-fit: cover;
+}
