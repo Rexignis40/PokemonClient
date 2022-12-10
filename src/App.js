@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Game from "./pages/Game";
 import Team from "./pages/Team";
 import Pokedex from "./pages/Pokedex";
+import Admin from "./pages/Admin";
 import {
   BrowserRouter as Router,
   Switch,
@@ -25,6 +26,9 @@ function App() {
         </Route>
         <Route path="/pokedex">
           <Pokedex />
+        </Route>
+        <Route path="/admin">
+          <Admin />
         </Route>
       </Switch>
     </Router>

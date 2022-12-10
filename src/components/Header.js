@@ -9,6 +9,7 @@ function Header() {
             <li><Link to="/game">Game</Link></li>
             <li><Link to="/team">Team</Link></li>
             <li><Link to="/pokedex">Pokedex</Link></li>
+            <li><Link to="/admin">Admin</Link></li>
         </ul>
     </nav>
     </>

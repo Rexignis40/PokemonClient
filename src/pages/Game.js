@@ -9,9 +9,7 @@ let startY = 10;
 const grass = Array.from(Array(20), () => new Array(20).fill(""));
 grass.map((row, i) =>{
   row.map((elm, j) =>{
-    console.log(perlin(i, j));
     let t = Math.floor(Math.abs(perlin(i, j)) * 3) + 1;
-    console.log(t);
     switch(t){
       case 1:
       grass[i][j] = {

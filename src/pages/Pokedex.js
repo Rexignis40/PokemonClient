@@ -24,8 +24,7 @@ function Pokedex() {
         <div key={p._id}>
           <p>{p.name}</p>
           <p>{p.genera}</p>
-          {console.log(p.sprites[0])}
-          <img src={p.sprites[0]} alt="" />
+          <img src={p.sprites["front_default"]} alt="" />
         </div>
       )})}
     </div>
