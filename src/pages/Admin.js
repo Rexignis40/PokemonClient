@@ -45,7 +45,7 @@ function Admin() {
         <Header />
         <h1>Admin</h1>
         <h2>Ajouter</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={e => handleSubmit()}>
             <label>
                 Name:
                 <input value={name} onChange={e => setName(e.target.value)}/>
@@ -82,7 +82,9 @@ function Admin() {
             <p>{p.name}</p>
             <p>{p.genera}</p>
             <img src={p.sprites["front_default"]} alt="" />
-            <button onClick={e => DeletePokemon(p._id)}>Supprimer</button>
+            <form onSubmit={e => DeletePokemon(p._id)}>
+                <input type="submit" value="Supprimer" />
+            </form>
           </div>
         )})}
       </div>
@@ -91,4 +93,3 @@ function Admin() {
   }
   
   export default Admin;
-  
