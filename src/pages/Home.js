@@ -2,6 +2,11 @@ import Header from "../components/Header.js";
 import Footer from "../components/Footer.js";
 
 function Home() {
+
+  function DeleteSave(){
+    window.user = undefined;
+  }
+
     return (
       <>
       <Header />
@@ -13,6 +18,7 @@ function Home() {
       <param name="autostart" value="true" />
       <param name="loop" value="true" />
       </object>
+      <button onClick={e => DeleteSave()}>Suprimer save</button>
       <Footer />
       </>
     );

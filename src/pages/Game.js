@@ -2,6 +2,8 @@ import "./Game.css";
 import Header from "../components/Header.js";
 import React, { useState } from "react";
 import { createNoise2D } from 'simplex-noise';
+import { getPokemonByName } from "../api/getPokemons";
+import { Redirect } from 'react-router-dom';
 
 const perlin = createNoise2D();
 let startX = 10;
@@ -36,7 +38,9 @@ grass.map((row, i) =>{
   });
 });
 
+let toFigth = false;
 function Game() {
+  if(window.user == undefined) window.user = JSON.parse(localStorage.getItem('user'));
   const [pos, setPos] = useState([startX, startY]);
   grass[pos[0]][pos[1]] = {
     sprite: <img src="./img/Hautes_herbes.png" alt=""/>,
@@ -44,7 +48,6 @@ function Game() {
     hasPlayeur: true
   };
     
-
     function handlePos(dir){
       grass[pos[0]][pos[1]]["hasPlayeur"] = false;
       switch(dir){
@@ -79,12 +82,26 @@ function Game() {
           default:
             break;
       }
+      if(grass[pos[0]][pos[1]]["type"] == 1 && Math.random() * 100 < 25){
+        toFigth = true;
+      }
     }
 
-    return (
-      <>
-      <Header />
-      <p>Game</p>
+    function Draw(){
+      if(toFigth){
+        return <Redirect to="/figth" />
+      }
+      if(window.user == undefined){
+        return(
+          <div>
+            <button onClick={e => AddStarter(e)} value="Goupix">Goupix</button>
+            <button onClick={e => AddStarter(e)} value="Axoloto">Axoloto</button>
+            <button onClick={e => AddStarter(e)} value="Chlorobule">Chlorobule</button>
+          </div>
+        )
+      }
+
+      return (<>
       <div>
         {grass.map((row, j) => {
           return(
@@ -103,6 +120,28 @@ function Game() {
       <button onClick={() => handlePos('q')}>Left</button>
       <button onClick={() => handlePos('s')}>Down</button>
       <button onClick={() => handlePos('d')}>Rigth</button>
+      </>)
+    }
+
+    function AddStarter(e){
+      window.user = {};
+      window.user.pokedex = [];
+      getPokemonByName(e.target.value).then((pok) =>{
+        window.user.pokedex.push({
+          name: pok[0].name
+        });
+        window.user.team = [];
+        window.user.team.push({
+          name: pok[0].name
+        });
+      });
+    }
+
+    return (
+      <>
+      <Header />
+      <p>Game</p>
+      {Draw()}
       </>
     );
   }
