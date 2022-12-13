@@ -20,7 +20,7 @@ import Pokedex from "../pages/Pokedex.js";
     function PokemonCatch(){
       if(window.user != undefined && window.user.pokedex != undefined){
         return(
-          window.user.team.map((p) => {
+          window.user.pokedex.map((p) => {
             return(
             <div key={p._id}>
               <p>{p.name}</p>
