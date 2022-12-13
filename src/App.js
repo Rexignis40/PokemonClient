@@ -4,14 +4,15 @@ import Game from "./pages/Game";
 import Team from "./pages/Team";
 import Pokedex from "./pages/Pokedex";
 import Admin from "./pages/Admin";
-import React, { useEffect } from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
 import Figth from './pages/Figth';
-
+import Login from './pages/login';
+import Register from './pages/Register';
 function App() {
   return (
     <>
@@ -34,6 +35,12 @@ function App() {
         </Route>
         <Route path="/admin">
           <Admin />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/register">
+          <Register />
         </Route>
       </Switch>
     </Router>
