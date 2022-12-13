@@ -1,14 +1,15 @@
-export const DeletePokemon = async (_uid) => {
+export const registerUser = async (_pseudo, _password) => {
     await fetch(
-        'http://localhost:4444/pokemon/delete', {
-            method: 'DELETE',
+        'https://localhost:4444/user/insert', {
+            method: 'POST',
             headers: {
                 'Accept': 'application/json', 
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                uid: _uid
+                pseudo: _pseudo,
+                password: _password
             })
         }
-    );
+    )
 }

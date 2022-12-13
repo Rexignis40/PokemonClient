@@ -43,6 +43,7 @@ function Admin() {
     return (
         <>
         <Header />
+        <div id="inf-container">
         <h1>Admin</h1>
         <h2>Ajouter</h2>
         <form onSubmit={e => handleSubmit()}>
@@ -88,6 +89,7 @@ function Admin() {
           </div>
         )})}
       </div>
+        </div>
         </>
     );
   }

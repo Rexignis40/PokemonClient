@@ -20,7 +20,8 @@ function Pokedex() {
     return (
       <>
       <Header />
-      <h2>Pokedex</h2>
+      <div id="inf-container">
+      <h1>Pokedex</h1>
       <input value={search} onChange={e => setSearch(e.target.value)}/>
       <div className="pokedex">
       {pokemons.map((p) => {
@@ -33,8 +34,8 @@ function Pokedex() {
         </div>
       )})}
       </div>
+      </div>
       </>
     );
   }
-  
 export default Pokedex;
