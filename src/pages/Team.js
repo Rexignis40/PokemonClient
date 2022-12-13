@@ -1,5 +1,6 @@
 import Header from "../components/Header.js";
-import Pokedex from "../pages/Pokedex.js";
+import { getPokemonByName } from "../api/getPokemons";
+
 
   function Team() {
     if(window.user == undefined) {
@@ -18,7 +19,7 @@ import Pokedex from "../pages/Pokedex.js";
       }
     }
     function PokemonCatch(){
-      if(window.user != undefined && window.user.pokedex != undefined){
+      if(window.user != undefined && window.user.team != undefined){
         return(
           window.user.team.map((p) => {
             return(
@@ -29,6 +30,16 @@ import Pokedex from "../pages/Pokedex.js";
         )
       }
     }
+    
+      function AddTeam(e){
+        if( window.user.team.lenght < 5){
+          getPokemonByName(e.target.value).then((pok) =>{
+            window.user.pokedex.push({
+              name: pok[0].name
+            });
+          } 
+        )}
+      }
 
       return (
         <>
@@ -38,6 +49,7 @@ import Pokedex from "../pages/Pokedex.js";
         {Draw()}
         <p>pokemons attrapées</p>
         {PokemonCatch()}
+        <button onClick={e => AddTeam(e)}>Ajouter à la team</button>
         </div>
         </>
       );

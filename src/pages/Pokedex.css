@@ -1,0 +1,7 @@
+.pokedex{
+    background-color: tomato;
+}
+
+.pokedex .pokedex-info p{
+    background-color: aquamarine;
+}
