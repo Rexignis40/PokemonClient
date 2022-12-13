@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { getPokemonByNum } from "../api/getPokemons";
+import Header from "../components/Header";
 
 function Figth() {
     if(window.user == undefined) {
@@ -30,6 +31,8 @@ function Figth() {
   if(pokemon != undefined && pokemon.length != 0){
     return (
       <>
+      <Header />
+      <div id="inf-container">
       <div>
           <img src={pokemon.sprites["front_default"]} />
       </div>
@@ -38,6 +41,7 @@ function Figth() {
       </div>
       <div>
         <button onClick={e => catchPokemon()}>Capturer</button>
+      </div>
       </div>
       </>
     );

@@ -1,5 +1,6 @@
 import Header from "../components/Header.js";
 import { getPokemonByName } from "../api/getPokemons";
+import Footer from "../components/Footer.js";
 
 
   function Team() {
@@ -44,12 +45,14 @@ import { getPokemonByName } from "../api/getPokemons";
       return (
         <>
         <Header />
-        <p>Team</p>
-        <div>
-        {Draw()}
-        <p>pokemons attrapées</p>
-        {PokemonCatch()}
-        <button onClick={e => AddTeam(e)}>Ajouter à la team</button>
+        <div id="inf-container">
+          <h1>Team</h1>
+          <div>
+          {Draw()}
+          <h2>pokemons attrapées</h2>
+          {PokemonCatch()}
+          <button onClick={e => AddTeam(e)}>Ajouter à la team</button>
+          </div>
         </div>
         </>
       );

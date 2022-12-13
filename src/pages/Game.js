@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { createNoise2D } from 'simplex-noise';
 import { getPokemonByName } from "../api/getPokemons";
 import { Redirect } from 'react-router-dom';
+import Footer from "../components/Footer";
 
 const perlin = createNoise2D();
 let startX = 10;
@@ -107,7 +108,7 @@ function Game() {
       }
 
       return (<>
-      <div>
+      <div id="map">
         {grass.map((row, j) => {
           return(
             <div key={j} className="grassRow">
@@ -149,8 +150,10 @@ function Game() {
     return (
       <>
       <Header />
-      <p>Game</p>
-      {Draw()}
+      <div id="big-container">
+        <h1>Game</h1>
+        {Draw()}
+      </div>
       </>
     );
   }
