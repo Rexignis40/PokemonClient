@@ -135,13 +135,15 @@ function Game() {
         window.user.pokedex.push({
           name: pok[0].name,
           sprites: pok[0].sprites,
-          genera: pok[0].genera
+          genera: pok[0].genera,
+          id: window.user.pokedex.length
         });
         window.user.team = [];
         window.user.team.push({
           name: pok[0].name,
           sprites: pok[0].sprites,
-          genera: pok[0].genera
+          genera: pok[0].genera,
+          id: window.user.pokedex.length
         });
       });
     }

@@ -9,10 +9,12 @@ import { getPokemonByName } from "../api/getPokemons";
     function Draw(){
       if(window.user != undefined && window.user.team != undefined){
         return(
-          window.user.team.map((p) => {
+          window.user.team.map((p, index) => {
             return(
             <div key={p._id}>
+              <img src={p.sprites["front_default"]} alt="pokemon"></img>
               <p>{p.name}</p>
+              <button onClick={e => RemoveTeam(e)} value={index}>Supprimer de la team</button>
             </div>
           )})
         )
@@ -21,35 +23,43 @@ import { getPokemonByName } from "../api/getPokemons";
     function PokemonCatch(){
       if(window.user != undefined && window.user.team != undefined){
         return(
-          window.user.pokedex.map((p) => {
-            return(
-            <div key={p._id}>
-              <p>{p.name}</p>
-            </div>
-          )})
+          window.user.pokedex.map((p, index) => {
+            if(p.id == window.user.team[p.id]) {
+              return(
+              <div>
+                <p>{p.name}</p>
+                <button onClick={e => AddTeam(e)} value={index}>Ajouter à la team</button>
+              </div>
+            )
+          }})
         )
       }
     }
     
       function AddTeam(e){
-        if( window.user.team.lenght < 5){
-          getPokemonByName(e.target.value).then((pok) =>{
-            window.user.pokedex.push({
-              name: pok[0].name
-            });
+        if( window.user.team.length < 6){
+          console.log(e.target.value);
+          window.user.pokedex.map((p) =>{
+            console.log(p);
+          })
+            window.user.team.push(window.user.pokedex[e.target.value]);
           } 
-        )}
+      }
+
+      function RemoveTeam(e) {
+        if( window.user.team.length > 1){
+          window.user.team.splice(e.target.value, 1);
+        }
       }
 
       return (
         <>
         <Header />
-        <p>Team</p>
+        <h2>Ma team :</h2>
         <div>
         {Draw()}
-        <p>pokemons attrapées</p>
+        <h2>Pokemons attrapées :</h2>
         {PokemonCatch()}
-        <button onClick={e => AddTeam(e)}>Ajouter à la team</button>
         </div>
         </>
       );
