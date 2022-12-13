@@ -1,6 +1,6 @@
 import "./Game.css";
 import Header from "../components/Header.js";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { createNoise2D } from 'simplex-noise';
 import { getPokemonByName } from "../api/getPokemons";
 import { Redirect } from 'react-router-dom';
@@ -38,7 +38,6 @@ grass.map((row, i) =>{
   });
 });
 
-let toFigth = false;
 function Game() {
   if(window.user == undefined) window.user = JSON.parse(localStorage.getItem('user'));
   const [pos, setPos] = useState([startX, startY]);
@@ -47,6 +46,12 @@ function Game() {
     type: 1,
     hasPlayeur: true
   };
+
+  const [ isFigth, setIsFigth ] = useState(false);
+
+  useEffect(() => {
+    setIsFigth(false);
+  }, []);
     
     function handlePos(dir){
       grass[pos[0]][pos[1]]["hasPlayeur"] = false;
@@ -83,13 +88,13 @@ function Game() {
             break;
       }
       if(grass[pos[0]][pos[1]]["type"] == 1 && Math.random() * 100 < 25){
-        toFigth = true;
+        setIsFigth(true);
       }
     }
 
     function Draw(){
-      if(toFigth){
-        return <Redirect to="/figth" />
+      if(isFigth){
+        return (<Redirect to="/figth" />);
       }
       if(window.user == undefined){
         return(
@@ -128,11 +133,15 @@ function Game() {
       window.user.pokedex = [];
       getPokemonByName(e.target.value).then((pok) =>{
         window.user.pokedex.push({
-          name: pok[0].name
+          name: pok[0].name,
+          sprites: pok[0].sprites,
+          genera: pok[0].genera
         });
         window.user.team = [];
         window.user.team.push({
-          name: pok[0].name
+          name: pok[0].name,
+          sprites: pok[0].sprites,
+          genera: pok[0].genera
         });
       });
     }

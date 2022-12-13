@@ -29,3 +29,21 @@ export const getPokemonByName = async (_name) => {
     const pokemons = await response.json()
     return pokemons
 }
+
+export const getPokemonByNum = async (_num) => {
+    let url = 'http://localhost:4444/pokemon';
+    if(_num !== 0){
+        url += '?num=' + _num;
+    }
+    const response = await fetch(
+        url, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json', 
+                'Content-Type':'application/json'
+            }
+        }
+    )
+    const pokemons = await response.json()
+    return pokemons
+}
