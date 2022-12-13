@@ -15,7 +15,6 @@ function Pokedex() {
 
     return (
       <>
-      <Header />
       <p>Pokedex</p>
       <input value={search} onChange={e => setSearch(e.target.value)}/>
       <div>
