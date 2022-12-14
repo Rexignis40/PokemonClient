@@ -9,6 +9,9 @@ body {
   background-image:  linear-gradient(#19302E, #7FA644);
   height: 80vh;
 }
+
+
+
 nav, footer{
   height: 10vh;
   padding: 0 50px;
@@ -19,9 +22,18 @@ nav ul, footer ul{
   padding: 0;
   display: flex;
   justify-content: space-between;
+  list-style-type: none;
 }
+
+nav ul{
+  padding-top: 40px;
+
+}
+
 nav a{
   text-decoration: none;
+  color: #C2DDFB;
+  font-size: 25px;
 }
 p {
   font-size: 50px;
@@ -35,9 +47,12 @@ a {
 a:hover {
   color: hotpink;
 }
+
+
 h1 {
   font-size: 100px;
   margin: 0;
+  padding-top: 100px;
 }
 h2{
   font-size: 75px;
