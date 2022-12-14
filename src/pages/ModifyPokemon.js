@@ -1,12 +1,7 @@
-import Header from "../components/Header.js";
-import React, { useEffect, useState } from "react";
-import {getPokemonByName} from "../api/getPokemons.js";
-import {DeletePokemon} from "../api/deletePokemon.js";
-import {AddPokemon} from "../api/AddPokemons.js";
-import UpdatePokemon from "./ModifyPokemon.js";
+import { useState } from "react";
+import { UpdatePokemon } from "../api/UpdatePokemon.js";
 
-function Admin() {
-    //Add pokemon
+function ModifyPokemon(props) {
     const [name, setName] = useState("");
     const [type, setType] = useState([]);
     const [num, setNum] = useState("");
@@ -18,7 +13,7 @@ function Admin() {
         else{
             for( var i = 0; i < type.length; i++){ 
     
-                if ( type[i] === e.target.value) { 
+                if (type[i] === e.target.value) { 
             
                     type.splice(i, 1); 
                 }
@@ -27,31 +22,23 @@ function Admin() {
         }
     }
 
-    const [search, setSearch] = useState("");
-    const [ pokemons, setPokemons ] = useState([]);
-  
-    useEffect(() => {
-      const pokemonsFetched = getPokemonByName(search);
-      pokemonsFetched
-        .then(result => setPokemons(result))
-        .catch(error=>console.error("Erreur avec notre API :",error.message));
-    },[search]);
-
     function handleSubmit(e){
-        AddPokemon(name, type, num);
+        let _name;
+        let _type;
+        let _num;
+        if(name == "") _name = props.poke.name;
+        else _name = name;
+        if(num == "") _num = props.poke.num;
+        else _num = num;
+        if(type.length == 0) _type = props.poke.type;
+        else _type = type;
+        UpdatePokemon(props.poke.name , _name, _type, _num);
     }
-
     return (
-        <>
-        <Header />
-        <div id="inf-container">
-        <h1>Admin</h1>
-        <h2>Ajouter</h2>
+      <>
+      <div>
         <form onSubmit={e => handleSubmit()}>
-            <label>
-                Name:
-                <input value={name} onChange={e => setName(e.target.value)}/>
-            </label>
+            <label>Name: <input value={name} onChange={e => setName(e.target.value)}/></label>
             <label>Normal: <input type="checkbox" value="normal" onChange={e => handleType(e)}/></label>
             <label>Fire: <input type="checkbox" value="fire" onChange={e => handleType(e)}/></label>
             <label>Water: <input type="checkbox" value="water" onChange={e => handleType(e)}/></label>
@@ -72,26 +59,13 @@ function Admin() {
             <label>Fairy: <input type="checkbox" value="fairy" onChange={e => handleType(e)}/></label>
             
             <label>Numéro: <input type="number" value={num} onChange={e => setNum(e.target.value)}/></label>
-            <input type="submit" value="Ajouter" />
+            
+            <input type="submit" value="Modifier" />
         </form>
-        <input value={search} onChange={e => setSearch(e.target.value)}/>
-        <div>
-        {pokemons.map((p) => {
-          return(
-          <div key={p._id}>
-            <p>{p.name}</p>
-            <p>{p.genera}</p>
-            <img src={p.sprites["front_default"]} alt="" />
-            <UpdatePokemon poke={p}/>
-            <form onSubmit={e => DeletePokemon(p._id)}>
-                <input type="submit" value="Supprimer" />
-            </form>
-          </div>
-        )})}
+        <button type="button" onClick={e => handleSubmit()} >Modif</button>
       </div>
-        </div>
-        </>
+      </>
     );
   }
-  
-  export default Admin;
+
+  export default ModifyPokemon;
