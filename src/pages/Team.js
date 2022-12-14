@@ -1,16 +1,15 @@
 import Header from "../components/Header.js";
 import { getPokemonByName } from "../api/getPokemons";
-import Footer from "../components/Footer.js";
 
 
-  function Team() {
-    if(window.user == undefined) {
-      window.user = JSON.parse(localStorage.getItem('user'));
+  function Team(props) {
+    if(props.user == undefined) {
+      props.setUser(JSON.parse(localStorage.getItem('user')));
     }
     function Draw(){
-      if(window.user != undefined && window.user.team != undefined){
+      if(props.user != undefined && props.user.team != undefined){
         return(
-          window.user.team.map((p) => {
+          props.user.team.map((p) => {
             return(
             <div key={p._id}>
               <p>{p.name}</p>
@@ -20,9 +19,9 @@ import Footer from "../components/Footer.js";
       }
     }
     function PokemonCatch(){
-      if(window.user != undefined && window.user.team != undefined){
+      if(props.user != undefined && props.user.team != undefined){
         return(
-          window.user.pokedex.map((p) => {
+          props.user.pokedex.map((p) => {
             return(
             <div key={p._id}>
               <p>{p.name}</p>
@@ -33,9 +32,9 @@ import Footer from "../components/Footer.js";
     }
     
       function AddTeam(e){
-        if( window.user.team.lenght < 5){
+        if(props.user.team.lenght < 5){
           getPokemonByName(e.target.value).then((pok) =>{
-            window.user.pokedex.push({
+            props.user.pokedex.push({
               name: pok[0].name
             });
           } 

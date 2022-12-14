@@ -1,10 +1,10 @@
 import Header from "../components/Header.js";
 import Footer from "../components/Footer.js";
 
-function Home() {
+function Home(props) {
 
   function DeleteSave(){
-    window.user = undefined;
+    props.setUser(undefined);
   }
 
     return (

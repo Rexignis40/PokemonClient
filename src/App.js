@@ -4,7 +4,7 @@ import Game from "./pages/Game";
 import Team from "./pages/Team";
 import Pokedex from "./pages/Pokedex";
 import Admin from "./pages/Admin";
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,24 +13,26 @@ import {
 import Figth from './pages/Figth';
 
 function App() {
+  
+  const [user, setUser] = useState();
   return (
     <>
     <Router>
       <Switch>
         <Route exact path="/">
-          <Home />
+          <Home user={user} setUser={setUser}/>
         </Route>
         <Route path="/game">
-          <Game />
+          <Game user={user} setUser={setUser}/>
         </Route>
         <Route path="/team">
-          <Team />
+          <Team user={user} setUser={setUser}/>
         </Route>
         <Route path="/pokedex">
           <Pokedex />
         </Route>
         <Route path="/figth">
-          <Figth />
+          <Figth user={user} setUser={setUser}/>
         </Route>
         <Route path="/admin">
           <Admin />

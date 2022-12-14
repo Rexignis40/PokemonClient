@@ -3,9 +3,9 @@ import { Redirect } from "react-router-dom";
 import { getPokemonByNum } from "../api/getPokemons";
 import Header from "../components/Header";
 
-function Figth() {
-    if(window.user == undefined) {
-        window.user = JSON.parse(localStorage.getItem('user'));
+function Figth(props) {
+    if(props.user == undefined) {
+      props.setUser(JSON.parse(localStorage.getItem('user')));
       }
       const [ pokemon, setPokemon ] = useState();
       const [ isEnd, setIsEnd ] = useState(false);
@@ -20,7 +20,7 @@ function Figth() {
       }, []);
 
   function catchPokemon(){
-    window.user.pokedex.push(pokemon);
+    props.user.pokedex.push(pokemon);
     setIsEnd(true);
   }
 
@@ -37,7 +37,7 @@ function Figth() {
           <img src={pokemon.sprites["front_default"]} />
       </div>
       <div>
-          <img src={window.user.team[0].sprites["back_default"]} />
+          <img src={props.user.team[0].sprites["back_default"]} />
       </div>
       <div>
         <button onClick={e => catchPokemon()}>Capturer</button>
