@@ -1,7 +1,6 @@
-
-export const getPokemonByType = async (_type) => {
-    let url = 'http://localhost:4444/pokemon/type';
-    const response = await fetch(
+export const getType = async (_type) => {
+    let url = 'http://localhost:4444/type';
+    await fetch(
         url, {
             method: 'GET',
             headers: {
