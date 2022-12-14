@@ -31,6 +31,7 @@ function Pokedex() {
           <p>{p.genera}</p>
           <img src={p.sprites["front_default"]} alt="" />
           <p>{p.num}</p>
+          <p className="divider">~~~~~~~</p>
         </div>
       )})}
       </div>

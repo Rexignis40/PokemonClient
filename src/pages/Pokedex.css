@@ -1,7 +1,10 @@
 .pokedex{
-    background-color: tomato;
+    background-image:  linear-gradient(to bottom right, #19302E, #7FA644);
+    height: 100%;
+    margin-left: 30%;
+    margin-right: 30%;
 }
 
-.pokedex .pokedex-info p{
-    background-color: aquamarine;
+.pokedex .pokedex-info .divider{
+    background-color: #19302E ;
 }

@@ -21,7 +21,8 @@ import Header from "../components/Header.js";
           props.user.pokedex.map((p, index) => {
               return(
               <div>
-                <p>{p.name}</p>
+              <img src={p.sprites["front_default"]} alt="pokemon"></img>
+              <p>{p.name}</p>
                 <button onClick={e => AddTeam(e)} value={index}>Ajouter à la team</button>
               </div>
             )
@@ -55,7 +56,7 @@ import Header from "../components/Header.js";
           <h1>Team</h1>
           <div>
           {Draw()}
-          <h2>pokemons attrapées</h2>
+          <h2>Pokemons Attrapées :</h2>
           {PokemonCatch()}
           </div>
         </div>
