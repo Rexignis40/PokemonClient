@@ -1,5 +1,6 @@
 import Header from "../components/Header.js";
 import Footer from "../components/Footer.js";
+import "./Home.css";
 
 function Home(props) {
 
@@ -11,15 +12,10 @@ function Home(props) {
       <>
       <Header />
       <div>
-      <img src="https://www.pokepedia.fr/images/a/ab/Sprite_194_2_XY.png?20170628164058" alt="Axoloto gif"/>
-      <img src="https://www.pokepedia.fr/images/3/36/Sprite_037_XY.png?20141211152652" alt="Goupix gif"/>
-      <img src="https://www.pokepedia.fr/images/d/d3/Sprite_548_XY.png?20140404232603" alt="Axoloto gif"/>
+        <img className="starter" src="https://www.pokebip.com/pokedex-images/ecarlate-violet/300/194.png?t=1" alt="Axoloto gif"/>
+        <img className="starter" src="https://www.pokepedia.fr/images/archive/3/36/20140122020927%21Sprite_037_XY.png" alt="Goupix gif"/>
+        <img className="starter" src="https://www.pokebip.com/pokedex-images/ecarlate-violet/300/548.png?t=1" alt="Chlorobule gif"/>
       <h1>Home</h1>
-      
-      {/* <object type="audio/ogg" data="../src/img/pokemon.mp3">
-      <param name="autostart" value="true" />
-      <param name="loop" value="true" />
-      </object> */}
       <button onClick={e => DeleteSave()}>Suprimer save</button>
       </div>
       <Footer />
