@@ -138,13 +138,15 @@ function Game(props) {
         newUser.pokedex.push({
           name: pok[0].name,
           sprites: pok[0].sprites,
-          genera: pok[0].genera
+          genera: pok[0].genera,
+          id: window.user.pokedex.length
         });
         newUser.team = [];
         newUser.team.push({
           name: pok[0].name,
           sprites: pok[0].sprites,
-          genera: pok[0].genera
+          genera: pok[0].genera,
+          id: window.user.pokedex.length
         });
         props.setUser(newUser);
       });

@@ -11,7 +11,8 @@ import {
   Route
 } from "react-router-dom";
 import Figth from './pages/Figth';
-
+import Login from './pages/login';
+import Register from './pages/Register';
 function App() {
   
   const [user, setUser] = useState();
@@ -36,6 +37,12 @@ function App() {
         </Route>
         <Route path="/admin">
           <Admin />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/register">
+          <Register />
         </Route>
       </Switch>
     </Router>

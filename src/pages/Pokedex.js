@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {getPokemonByName} from "../api/getPokemons.js";
 import './Pokedex.css';
 import Header from "../components/Header.js";
-
+import './Team.css';
 
 
 function Pokedex() {
@@ -38,5 +38,4 @@ function Pokedex() {
       </>
     );
   }
-  
 export default Pokedex;

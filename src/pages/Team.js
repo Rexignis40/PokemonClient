@@ -9,10 +9,12 @@ import { getPokemonByName } from "../api/getPokemons";
     function Draw(){
       if(props.user != undefined && props.user.team != undefined){
         return(
-          props.user.team.map((p) => {
+          props.user.team.map((p, index) => {
             return(
             <div key={p._id}>
+              <img src={p.sprites["front_default"]} alt="pokemon"></img>
               <p>{p.name}</p>
+              <button onClick={e => RemoveTeam(e)} value={index}>Supprimer de la team</button>
             </div>
           )})
         )
@@ -21,24 +23,29 @@ import { getPokemonByName } from "../api/getPokemons";
     function PokemonCatch(){
       if(props.user != undefined && props.user.team != undefined){
         return(
-          props.user.pokedex.map((p) => {
-            return(
-            <div key={p._id}>
-              <p>{p.name}</p>
-            </div>
-          )})
+          props.user.pokedex.map((p, index) => {
+            if(p.id == props.user.team[p.id]) {
+              return(
+              <div>
+                <p>{p.name}</p>
+                <button onClick={e => AddTeam(e)} value={index}>Ajouter à la team</button>
+              </div>
+            )
+          }})
         )
       }
     }
     
       function AddTeam(e){
-        if(props.user.team.lenght < 5){
-          getPokemonByName(e.target.value).then((pok) =>{
-            props.user.pokedex.push({
-              name: pok[0].name
-            });
+        if(props.user.team.length < 6){
+          props.user.team.push(props.user.pokedex[e.target.value]);
           } 
-        )}
+      }
+
+      function RemoveTeam(e) {
+        if( window.user.team.length > 1){
+          window.user.team.splice(e.target.value, 1);
+        }
       }
 
       return (
