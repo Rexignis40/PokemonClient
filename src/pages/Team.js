@@ -1,6 +1,8 @@
+import { useEffect, useState } from "react";
 import Header from "../components/Header.js";
 
   function Team(props) {
+    const [action,setAction] = useState(0);
     function Draw(){
       if(props.user != undefined && props.user.team != undefined){
         return(
@@ -36,6 +38,7 @@ import Header from "../components/Header.js";
           newUser.team.push(props.user.pokedex[e.target.value]);
           newUser.pokedex.splice(e.target.value, 1);
           props.setUser(newUser);
+          setAction(action+1)
           }
       }
 
@@ -45,8 +48,10 @@ import Header from "../components/Header.js";
           newUser.pokedex.push(props.user.team[e.target.value]);
           newUser.team.splice(e.target.value, 1);
           props.setUser(newUser);
+          setAction(action+1)
         }
       }
+
 
       return (
         <>
