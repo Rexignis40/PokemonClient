@@ -1,11 +1,6 @@
 import Header from "../components/Header.js";
-import { getPokemonByName } from "../api/getPokemons";
-
 
   function Team(props) {
-    if(props.user == undefined) {
-      props.setUser(JSON.parse(localStorage.getItem('user')));
-    }
     function Draw(){
       if(props.user != undefined && props.user.team != undefined){
         return(
@@ -24,27 +19,32 @@ import { getPokemonByName } from "../api/getPokemons";
       if(props.user != undefined && props.user.team != undefined){
         return(
           props.user.pokedex.map((p, index) => {
-            if(p.id == props.user.team[p.id]) {
               return(
               <div>
                 <p>{p.name}</p>
                 <button onClick={e => AddTeam(e)} value={index}>Ajouter à la team</button>
               </div>
             )
-          }})
+          })
         )
       }
     }
     
       function AddTeam(e){
         if(props.user.team.length < 6){
-          props.user.team.push(props.user.pokedex[e.target.value]);
-          } 
+          let newUser = props.user;
+          newUser.team.push(props.user.pokedex[e.target.value]);
+          newUser.pokedex.splice(e.target.value, 1);
+          props.setUser(newUser);
+          }
       }
 
       function RemoveTeam(e) {
-        if( window.user.team.length > 1){
-          window.user.team.splice(e.target.value, 1);
+        if(props.user.team.length > 1){
+          let newUser = props.user;
+          newUser.pokedex.push(props.user.team[e.target.value]);
+          newUser.team.splice(e.target.value, 1);
+          props.setUser(newUser);
         }
       }
 
@@ -57,7 +57,6 @@ import { getPokemonByName } from "../api/getPokemons";
           {Draw()}
           <h2>pokemons attrapées</h2>
           {PokemonCatch()}
-          <button onClick={e => AddTeam(e)}>Ajouter à la team</button>
           </div>
         </div>
         </>

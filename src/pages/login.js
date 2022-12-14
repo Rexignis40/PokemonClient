@@ -2,6 +2,7 @@ import Header from "../components/Header.js";
 import { loginUser } from "../api/loginUser";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Footer from "../components/Footer.js";
 
 function Login(){
     const [pseudo, setPseudo] = useState("");
@@ -12,9 +13,9 @@ function Login(){
     return(
         <>
         <Header />
-        
         <div>
-            <h2>Login</h2>
+        <div>
+            <h1>Login</h1>
             <form onSubmit={e => OnLogin()}>
                 <div>
                     <label>pseudo</label>
@@ -28,7 +29,8 @@ function Login(){
             </form>
         </div>
         <li><Link to="/register">register</Link></li>
-        
+        </div>
+        <Footer />
         </>
     )
 }

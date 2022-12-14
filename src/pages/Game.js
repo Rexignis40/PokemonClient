@@ -40,7 +40,6 @@ grass.map((row, i) =>{
 });
 
 function Game(props) {
-  if(props.user == undefined) props.setUser(JSON.parse(localStorage.getItem('user')));
   const [pos, setPos] = useState([startX, startY]);
   grass[pos[0]][pos[1]] = {
     sprite: <img src="./img/Hautes_herbes.png" alt=""/>,
@@ -135,18 +134,11 @@ function Game(props) {
       let newUser = {};
       newUser.pokedex = [];
       getPokemonByName(e.target.value).then((pok) =>{
-        newUser.pokedex.push({
-          name: pok[0].name,
-          sprites: pok[0].sprites,
-          genera: pok[0].genera,
-          id: window.user.pokedex.length
-        });
         newUser.team = [];
         newUser.team.push({
           name: pok[0].name,
           sprites: pok[0].sprites,
-          genera: pok[0].genera,
-          id: window.user.pokedex.length
+          genera: pok[0].genera
         });
         props.setUser(newUser);
       });

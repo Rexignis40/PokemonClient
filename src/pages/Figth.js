@@ -4,9 +4,6 @@ import { getPokemonByNum } from "../api/getPokemons";
 import Header from "../components/Header";
 
 function Figth(props) {
-    if(props.user == undefined) {
-      props.setUser(JSON.parse(localStorage.getItem('user')));
-      }
       const [ pokemon, setPokemon ] = useState();
       const [ isEnd, setIsEnd ] = useState(false);
     
