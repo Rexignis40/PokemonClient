@@ -45,7 +45,7 @@ function ModifyPokemon(props) {
             <label>Electric: <input type="checkbox" value="electric" onChange={e => handleType(e)}/></label>
             <label>Grass: <input type="checkbox" value="grass" onChange={e => handleType(e)}/></label>
             <label>Ice: <input type="checkbox" value="ice" onChange={e => handleType(e)}/></label>
-            <label>Figthting: <input type="checkbox" value="figthting" onChange={e => handleType(e)}/></label>
+            <label>Figthting: <input type="checkbox" value="fighting" onChange={e => handleType(e)}/></label>
             <label>Poison: <input type="checkbox" value="poison" onChange={e => handleType(e)}/></label>
             <label>Ground: <input type="checkbox" value="ground" onChange={e => handleType(e)}/></label>
             <label>Flying: <input type="checkbox" value="flying" onChange={e => handleType(e)}/></label>
@@ -54,7 +54,7 @@ function ModifyPokemon(props) {
             <label>Rock: <input type="checkbox" value="rock" onChange={e => handleType(e)}/></label>
             <label>Ghost: <input type="checkbox" value="ghost" onChange={e => handleType(e)}/></label>
             <label>Dragon: <input type="checkbox" value="dragon" onChange={e => handleType(e)}/></label>
-            <label>Dark: <input type="checkbox" value="adrk" onChange={e => handleType(e)}/></label>
+            <label>Dark: <input type="checkbox" value="dark" onChange={e => handleType(e)}/></label>
             <label>Steel: <input type="checkbox" value="steel" onChange={e => handleType(e)}/></label>
             <label>Fairy: <input type="checkbox" value="fairy" onChange={e => handleType(e)}/></label>
             
@@ -62,7 +62,6 @@ function ModifyPokemon(props) {
             
             <input type="submit" value="Modifier" />
         </form>
-        <button type="button" onClick={e => handleSubmit()} >Modif</button>
       </div>
       </>
     );

@@ -10,6 +10,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import UpdatePokemon from "./ModifyPokemon.js";
+import ModifyPokemon from './ModifyPokemon.js';
 
 function Admin() {
     //Add pokemon
@@ -75,7 +76,7 @@ function Admin() {
                 <Col><Form.Check type="switch" id="custom-switch" label="Electric" value="electric" onChange={e => handleType(e)}></Form.Check></Col>
                 <Col><Form.Check type="switch" id="custom-switch" label="Grass" value="grass" onChange={e => handleType(e)}></Form.Check></Col>
                 <Col><Form.Check type="switch" id="custom-switch" label="Ice" value="ice" onChange={e => handleType(e)}></Form.Check></Col>
-                <Col><Form.Check type="switch" id="custom-switch" label="Figthting" value="figthting" onChange={e => handleType(e)}></Form.Check></Col>
+                <Col><Form.Check type="switch" id="custom-switch" label="Figthting" value="fighting" onChange={e => handleType(e)}></Form.Check></Col>
                 <Col><Form.Check type="switch" id="custom-switch" label="Poison" value="poison" onChange={e => handleType(e)}></Form.Check></Col>
                 <Col><Form.Check type="switch" id="custom-switch" label="Ground" value="ground" onChange={e => handleType(e)}></Form.Check></Col>
                 <Col><Form.Check type="switch" id="custom-switch" label="Flying" value="flying" onChange={e => handleType(e)}></Form.Check></Col>
@@ -110,6 +111,7 @@ function Admin() {
                 <p>{p.name}</p>
                 <p>{p.genera}</p>
                 <img src={p.sprites["front_default"]} alt="" />
+                <ModifyPokemon poke={p}/>
                 <form onSubmit={e => DeletePokemon(p._id)}>
                     <input type="submit" value="Supprimer" />
                 </form>
