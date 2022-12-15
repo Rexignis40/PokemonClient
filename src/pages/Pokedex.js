@@ -31,8 +31,8 @@ function Pokedex() {
     pokemonsFetched
       .then(result => setPokemons(result))
       .catch(error=>console.error("Erreur avec notre API :",error.message));
-    const typeFetched = getType(type);
-    typeFetched
+    const typesFetched = getType(type);
+    typesFetched
       .then(result => setType(result))
       .catch(error=>console.error("Erreur avec notre API :",error.message));
   },[search, type]);
