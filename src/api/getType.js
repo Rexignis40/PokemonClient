@@ -1,8 +1,5 @@
 export const getType = async (_type) => {
     let url = 'http://localhost:4444/type';
-    if(_type.length !== 0){
-        url += '?type=' + _type;
-    }
     const response = await fetch(
         url, {
             method: 'GET',
