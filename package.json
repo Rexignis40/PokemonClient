@@ -10,6 +10,7 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.40.0",
     "react-router-dom": "^5.3.4",
     "react-scripts": "5.0.1",
     "simplex-noise": "^4.0.1",
